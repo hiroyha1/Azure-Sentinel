@@ -216,9 +216,9 @@ function Get-O365Data{
             
             #Handles Pagination
             $nextPageResult = Invoke-WebRequest -Method GET -Headers $headerParams -Uri $listAvailableContentUri
-            If(($nextPageResult.Headers.NextPageUrl) -ne $null){
+            If(($nextPageResult.Headers.NextPageUri) -ne $null){
                 $nextPage = $true
-                $listAvailableContentUri = $nextPageResult.Headers.NextPageUrl
+                $listAvailableContentUri = $nextPageResult.Headers.NextPageUri
             }
             Else{$nextPage = $false}
         } until ($nextPage -eq $false)
